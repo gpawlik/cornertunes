@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CornerTunes Music App</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rubik:400,500,700" rel="stylesheet"> 
+</head>
+<body>
+<div class="app">
+    <div class="header">
+        <div class="main-wrapper">
+            <h1 class="header-logo">Corner<span>Tunes</span></h1>
+        </div>
+    </div>
+    <div class="main-wrapper">   
+        <div id="track-list" class="page visible">     
+            <form class="searchbox">
+                <input type="text" name="search-music" placeholder="Search for the music..." autocomplete="off">
+            </form>
+            <div id="track-table"></div>
+        </div>            
+        
+        <div id="track-box" class="page">
+        </div>           
+    </div>
+</div>
+
+<script id="tracklist-template" type="x-template">    
+    <table class="track-list">
+        <thead>                
+            <td>Track Title</td>
+            <td>Artist</td>
+            <td>Album Title</td>
+            <td>Release Date</td>
+            <td>Cover</td>
+            <td class="centered">Length 
+                <div class="sort-box">
+                    <span class="icon-sort icon-arrow-down" data-sortby="trackTimeMillis" data-sort-order="asc"></span>
+                    <span class="icon-sort icon-arrow-up" data-sortby="trackTimeMillis" data-sort-order="desc"></span>                         
+                </div>
+            </td>
+            <td class="centered">Genre 
+                <div class="sort-box">
+                    <span class="icon-sort icon-arrow-down" data-sortby="primaryGenreName" data-sort-order="asc"></span>
+                    <span class="icon-sort icon-arrow-up" data-sortby="primaryGenreName" data-sort-order="desc"></span>                         
+                </div>
+            </td>   
+            <td class="centered">Price 
+                <div class="sort-box">
+                    <span class="icon-sort icon-arrow-down" data-sortby="trackPrice" data-sort-order="asc"></span>
+                    <span class="icon-sort icon-arrow-up" data-sortby="trackPrice" data-sort-order="desc"></span>                         
+                </div>
+            </td>             
+        </thead>
+        <tbody>                
+            <%if(this.count === 0){%>
+                <tr>
+                    <td colspan="8" class="centered">No results found... Start searching your favourite music!</td>
+                </tr>
+            <%}%>
+            <%for(var index in this.results) {%>
+                <tr data-id="<% index %>" class="track-row">
+                    <td><% this.results[index].trackName %></td>
+                    <td><% this.results[index].artistName %></td>
+                    <td><% this.results[index].collectionName %></td>
+                    <td><% this.results[index].releaseFormatted %></td>
+                    <td><img src="<% this.results[index].artworkUrl30 %>" /></td>
+                    <td class="centered"><% this.results[index].timeFormatted %></td>
+                    <td class="centered"><% this.results[index].primaryGenreName %></td>
+                    <td class="centered"><% this.results[index].priceFormatted %></td>                    
+                </tr>   
+            <%}%>                                                                                              
+        </tbody>
+    </table>                      
+</script>
+
+<script id="track-template" type="x-template">
+    <div class="track-box-container">  
+        <div class="track-header">
+            <div class="track-nav">
+                <button class="back-index button button-navigation"><span class="icon-arrow-left"></span> Back to the list</button>
+                <div class="prev-song button button-navigation"><span class="icon-arrow-left"></span> PREV</div>
+                <div class="next-song button button-navigation">NEXT <span class="icon-arrow-right"></span></div>                            
+            </div>
+        </div>
+        <div class="track-content">
+            <div class="row">
+                <div class="col-2">
+                    <img class="track-thumbnail" src="<% this.artworkUrl100 %>">
+                </div>
+                <div class="col-7">
+                    <div class="track-info">
+                        <h3 class="track-title"><% this.trackName %></h3>
+                        <h5 class="track-author"><% this.artistName %></h5>
+                        <p>Album: <span ><% this.collectionName %></span></p>
+                        <p>Track Length: <span><% this.timeFormatted %></span></p>
+                        <p>Genre: <span><% this.primaryGenreName %></span></p>                                                        
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="sound-controls">
+                        <button class="button button-secondary play">PLAY</button>
+                        <button class="button button-secondary pause">PAUSE</button>
+                    </div>
+                    <p>
+                        <a class="track-link button button-primary" href="<% this.trackViewUrl %>" target="_blank">
+                            Buy now for just <span><% this.priceFormatted %></span>!
+                        </a>                                     
+                    </p>
+                    <p>
+                        <a class="button button-share-twitter" href="https://twitter.com/intent/tweet?text=I+am+listening+to+<% this.trackName %>+by+<% this.artistName %>.+This+is+awesome!" class="twitter-share-button" data-show-count="false">Share on Twitter!</a>
+                    </p>
+                </div>
+            </div>                        
+            <audio id="audio" src="<% this.previewUrl %>"></audio>                                                
+        </div>                  
+    </div>
+</script>    
+
+<script src="js/bundle.js"></script> 
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</html>

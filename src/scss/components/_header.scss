@@ -1,0 +1,11 @@
+.header {
+    background: $primary-darker; 
+    &-logo {
+        color: $secondary-lighter;
+        font-size:3em;
+        line-height:200%;
+        span {
+            color: #fff;
+        }
+    }   
+}

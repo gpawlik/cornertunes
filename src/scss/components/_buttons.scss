@@ -1,0 +1,45 @@
+.button {
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 3px;
+    margin: 5px 0;   
+    border: none;
+    width: 100%; 
+    cursor: pointer;
+    display: block;
+}
+.button-primary {
+    background-color: $action-success;
+    &:hover {
+        background-color: darken($action-success, 5%);
+    }
+}
+.button-secondary {
+    background-color: $primary-light;
+    &.active {
+        background-color: darken($primary-light, 10%);
+    } 
+    &:hover {
+        background-color: darken($primary-light, 5%);
+    }        
+}
+.button-navigation {
+    width: auto;
+    display: inline-block;
+    background-color: darken($primary-lighter, 5%);
+    margin: 10px 0; 
+    &:hover {
+        background-color: darken($primary-lighter, 10%);
+    } 
+}
+.button-share-twitter {
+    background: $twitter-color;
+    &:hover {
+        background-color: darken($twitter-color, 10%);
+    }     
+}
+

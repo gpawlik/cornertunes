@@ -1,0 +1,35 @@
+.track-list {
+    width: 100%;
+    border-collapse: collapse; 
+    thead tr {
+        background-color: $primary-light;
+        color: $secondary-lighter; 
+        font-weight: bold;     
+    }
+    tbody tr {
+        background-color: #fff;
+        height: 70px;
+        cursor: pointer;
+        &:hover {
+            background-color: #eee;
+        }
+        td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #dedede;
+        }        
+    }
+    td {
+        padding: 10px 15px;
+        vertical-align: middle;
+        &.centered {
+            text-align: center;
+        }
+    }      
+}
+.sort-box {
+    display: block;
+    text-align: center;
+    span {
+        cursor: pointer;
+    }
+}

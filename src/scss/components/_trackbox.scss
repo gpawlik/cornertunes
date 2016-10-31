@@ -1,0 +1,55 @@
+#track-box {
+    background:#fff;
+    border: 1px solid #dedede;    
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px -4px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    margin-top: 10px;
+}
+.track-header {
+    background-color: $primary-light;
+    color: $secondary-lighter; 
+    font-weight: bold;   
+    padding: 10px 20px;  
+}
+.track-content {
+    padding: 20px;
+}
+.track-thumbnail {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px;
+}
+.track-info {
+    margin-bottom: 10px;
+    .track-title {
+        font-size: 1.5em;
+        color: $primary-light;
+    }
+    .track-author {
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 0.8em;
+        line-height: 120%;
+        span {
+            font-weight: 600;
+        }
+    }
+}
+.sound-controls {
+    display: flex;
+    button {
+        flex-grow: 1;
+        margin: 0 3px 0 0;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+@media(max-width: $mobile-treshold) {
+    #track-box {
+        text-align: center;
+    }     
+}

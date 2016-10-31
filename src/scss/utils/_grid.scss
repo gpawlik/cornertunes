@@ -1,0 +1,55 @@
+// Very simple grid system
+.row {
+    &::before,
+    &::after {
+        content: "";
+        display: table;  
+        clear: both;      
+    }
+}
+
+[class^="col-"], 
+[class*=" col-"] {
+    margin: 0 1%;  
+    float: left;  
+}
+
+.col-12 {
+    width: 98%;   
+}
+
+.col-9 {
+    width: 73%;
+}
+
+.col-8 {
+    width: 64%;    
+}
+
+.col-7 {
+    width: 55%;    
+}
+
+.col-6 {
+    width: 48%;    
+}
+
+.col-4 {
+    width: 31%;    
+}
+
+.col-3 {
+    width: 23%;    
+}
+@media(max-width: $mobile-treshold) {
+.col-9,
+.col-8,
+.col-7,
+.col-6,
+.col-4,
+.col-3,
+.col-2 {
+    width: 98%;    
+}      
+}
+
